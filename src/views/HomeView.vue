@@ -70,11 +70,10 @@ const handleOrder = () => {
 
 const closeModal = () => {
   isModalVisible.value = false;
-  // Saat modal ditutup, reset pilihan ke pizza pertama (atau pilihan default lainnya)
   if (orderStore.pizzas.length > 0) {
     orderStore.selectPizza(orderStore.pizzas[0]);
   }
-  // Reset selectedSize dan selectedToppings juga jika diperlukan
+  
   if (orderStore.sizes.length > 0) {
     orderStore.selectedSize = orderStore.sizes[0];
   }
