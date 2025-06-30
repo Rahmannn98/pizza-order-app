@@ -43,6 +43,7 @@ const toggleTopping = (topping: Topping) => {
 <style scoped lang="scss">
 $primary-color: #F97316;
 $text-dark: #374151;
+$border-light: #d1d5db;
 
 .section-title--sm {
   font-size: 1.25rem;
@@ -88,7 +89,7 @@ $text-dark: #374151;
   }
 
   &:not(&--disabled):not(:has(input:checked)):hover {
-    border-color: #d1d5db;
+    border-color: $border-light;
   }
 }
 </style>

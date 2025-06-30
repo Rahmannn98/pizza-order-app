@@ -59,7 +59,7 @@ const orderStore = useOrderStore();
 // State lokal hanya untuk modal
 const isModalVisible = ref(false);
 
-// Saat komponen dimuat, panggil action dari store untuk memuat data
+ 
 onMounted(() => {
   orderStore.loadData();
 });
@@ -73,7 +73,7 @@ const closeModal = () => {
   if (orderStore.pizzas.length > 0) {
     orderStore.selectPizza(orderStore.pizzas[0]);
   }
-  
+
   if (orderStore.sizes.length > 0) {
     orderStore.selectedSize = orderStore.sizes[0];
   }
