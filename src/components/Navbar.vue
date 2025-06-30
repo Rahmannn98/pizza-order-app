@@ -5,7 +5,7 @@
         Food<span class="text-primary">now</span>
       </a>
 
-      <nav class="navbar__nav">
+      <nav class="navbar__nav" :class="{ 'is-open': isMobileMenuOpen }">
         <ul>
           <li><a href="#">Home</a></li>
           <li class="active"><a href="#">Order</a></li>
@@ -13,26 +13,42 @@
           <li><a href="#">Blog</a></li>
           <li><a href="#">Contact us</a></li>
         </ul>
+
+        <div class="navbar__actions">
+          <a href="#" class="navbar__login-link">Login</a>
+          <button class="btn btn--primary">Register</button>
+        </div>
       </nav>
 
-      <div class="navbar__actions">
-        <a href="#" class="navbar__login-link">Login</a>
-        <button class="btn btn--primary">Register</button>
-      </div>
+      <button class="navbar__hamburger" @click="toggleMobileMenu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+
 defineOptions({
   name: 'AppNavbar'
 });
+
+const isMobileMenuOpen = ref(false);
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
 </script>
 
 <style scoped lang="scss">
 $primary-color: #F97316;
 $text-light: #FFFFFF;
 $text-dark: #1F2937;
+$breakpoint-mobile: 768px;
 
 .navbar {
   position: absolute;
@@ -49,6 +65,7 @@ $text-dark: #1F2937;
     max-width: 1200px;
     margin: 0 auto;
     padding: 1.5rem 2rem;
+    position: relative;
   }
 
   &__logo {
@@ -56,6 +73,7 @@ $text-dark: #1F2937;
     font-weight: 700;
     color: $text-light;
     text-decoration: none;
+    z-index: 1;
 
     .text-primary {
       color: $primary-color;
@@ -63,8 +81,30 @@ $text-dark: #1F2937;
   }
 
   &__nav {
-    @media (max-width: 768px) {
-      display: none;
+    display: flex;
+    align-items: center;
+
+    @media (min-width: ($breakpoint-mobile + 1px)) {
+      gap: 2.5rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background-color: $text-dark;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+      transition: right 0.4s ease-in-out;
+
+      &.is-open {
+        right: 0;
+      }
     }
 
     ul {
@@ -73,6 +113,21 @@ $text-dark: #1F2937;
       gap: 2.5rem;
       margin: 0;
       padding: 0;
+
+      @media (min-width: ($breakpoint-mobile + 1px)) {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      @media (max-width: $breakpoint-mobile) {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        position: static;
+        transform: none;
+      }
     }
 
     a {
@@ -80,8 +135,6 @@ $text-dark: #1F2937;
       color: $text-light;
       font-weight: 500;
       transition: color 0.3s ease;
-      padding-bottom: 0;
-      border-bottom: none;
 
       &:hover {
         color: $primary-color;
@@ -98,6 +151,42 @@ $text-dark: #1F2937;
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    z-index: 1;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 2rem;
+      width: 100%;
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  &__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 101;
+
+    @media (max-width: $breakpoint-mobile) {
+      display: flex;
+    }
+
+    .hamburger-line {
+      width: 100%;
+      height: 3px;
+      background-color: $text-light;
+      border-radius: 3px;
+    }
   }
 
   &__login-link {
