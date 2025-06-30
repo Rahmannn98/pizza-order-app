@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "Small", "priceModifier": 0 },
+  { "id": 2, "name": "Medium", "priceModifier": 5 },
+  { "id": 3, "name": "Large", "priceModifier": 7 }
+]

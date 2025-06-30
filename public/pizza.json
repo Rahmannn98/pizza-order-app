@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Cheese Pizza",
+    "price": 8.00,
+    "image": "/img/pizza/Cheese Pizza.png",
+    "offer": false,
+    "allowedToppings": [1, 2, 3, 4, 8, 11]
+  },
+  {
+    "id": 2,
+    "name": "Veggie Pizza",
+    "price": 10.00,
+    "image": "/img/pizza/Veggie Pizza.png",
+    "offer": true,
+    "allowedToppings": [1, 2, 3, 4, 5, 6, 7, 8]
+  },
+  {
+    "id": 3,
+    "name": "Classical Pizza",
+    "price": 12.00,
+    "image": "/img/pizza/Classical Pizza.png",
+    "offer": false,
+    "allowedToppings": [2, 3, 4, 8, 9, 10, 11, 12]
+  }
+]
