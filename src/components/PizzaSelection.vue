@@ -36,13 +36,13 @@ $primary-color: #F97316;
 .section-title {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #eb7420;
+  color: #1f2937;
 }
-
 
 .pizza-selection__list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  // Menggunakan 3 kolom agar sejajar, sesuaikan jika perlu
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
@@ -52,7 +52,7 @@ $primary-color: #F97316;
   align-items: center;
   gap: 1.25rem;
   background-color: white;
-  border: 1px solid #e5e7eb;
+  border: 2px solid #e5e7eb;
   border-radius: 12px;
   padding: 1.25rem;
   cursor: pointer;
@@ -65,26 +65,26 @@ $primary-color: #F97316;
     border-color: $primary-color;
     color: white;
     transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(249, 115, 22, 0.3), 0 4px 6px -2px rgba(249, 115, 22, 0.2);
 
+    .pizza-card__name {
+      color: white;
+    }
     .pizza-card__price {
       color: white;
-
       .has-offer {
         color: #ffcbb6;
       }
     }
-
     .pizza-card__price-offer {
       color: white;
     }
-
-
   }
 
   &:hover:not(&--selected) {
-    border-color: #f6ad83;
+    border-color: #f6ad83; 
     transform: translateY(-2px);
+    box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.05);
   }
 
   &:hover .pizza-card__image {
@@ -110,6 +110,7 @@ $primary-color: #F97316;
 .pizza-card__name {
   font-weight: 600;
   font-size: 1.15rem;
+  color: #1f2937;
 }
 
 .pizza-card__price {
@@ -120,14 +121,13 @@ $primary-color: #F97316;
 
   .has-offer {
     text-decoration: line-through;
-    color: #f6ad83;
+    color: #9ca3af;
   }
 
   .pizza-card__price-offer {
     font-weight: 700;
     color: $primary-color;
   }
-
 }
 
 .pizza-card__offer-badge {

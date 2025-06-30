@@ -44,27 +44,34 @@ $primary-color: #F97316;
   align-items: center;
   cursor: pointer;
   font-size: 1rem;
+  color: #374151;
 
   input {
     display: none;
+  }
+
+  &:hover .radio-custom {
+    border-color: #f6ad83;
   }
 }
 
 .radio-custom {
   width: 20px;
   height: 20px;
-  border: 2px solid #E5E7EB;
+  border: 2px solid #d1d5db;
   border-radius: 50%;
   margin-right: 0.75rem;
   position: relative;
-  transition: border-color 0.3s;
+  transition: border-color 0.2s ease-in-out;
 }
 
-.size-selection__label input:checked+.radio-custom {
+
+.size-selection__label input:checked + .radio-custom {
   border-color: $primary-color;
 }
 
-.size-selection__label input:checked+.radio-custom::after {
+
+.size-selection__label input:checked + .radio-custom::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -74,5 +81,15 @@ $primary-color: #F97316;
   height: 10px;
   background-color: $primary-color;
   border-radius: 50%;
+  animation: scale-in 0.2s ease-in-out;
+}
+
+@keyframes scale-in {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 </style>

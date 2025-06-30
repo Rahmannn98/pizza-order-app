@@ -42,6 +42,7 @@ const toggleTopping = (topping: Topping) => {
 
 <style scoped lang="scss">
 $primary-color: #F97316;
+$primary-color-light: #FFF7ED;
 $text-dark: #374151;
 $border-light: #d1d5db;
 
@@ -75,10 +76,12 @@ $border-light: #d1d5db;
     display: none;
   }
 
+
   &:has(input:checked) {
-    background-color: white;
-    color: $text-dark;
+    background-color: $primary-color-light;
+    color: $primary-color;
     border-color: $primary-color;
+    font-weight: 600;
   }
 
   &--disabled {
@@ -88,8 +91,10 @@ $border-light: #d1d5db;
     opacity: 0.7;
   }
 
+
   &:not(&--disabled):not(:has(input:checked)):hover {
-    border-color: $border-light;
+    background-color: #fee9d5;
+    border-color: #f6ad83;
   }
 }
 </style>
